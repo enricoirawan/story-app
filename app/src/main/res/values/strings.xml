@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Story App</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="full_name">Full Name</string>
+    <string name="email_empty">Email must not be empty</string>
+    <string name="name_empty">Name must not be empty</string>
+    <string name="password_empty">Password must not be empty</string>
+    <string name="logout">Logout</string>
+    <string name="fab_add">fab to add story</string>
+    <string name="setting">Setting</string>
+    <string name="retry">Retry</string>
+    <string name="dateFormat">Uploaded on %1$s</string>
+    <string name="take_photo">Take photo</string>
+    <string name="open_gallery">Open Gallery</string>
+    <string name="describe_this_photo">Describe this photo</string>
+    <string name="upload">Upload</string>
+    <string name="add">Add Story</string>
+    <string name="file_not_ready">Please add the file first</string>
+    <string name="success_upload">Upload Success</string>
+    <string name="description_required">Description must be filled</string>
+    <string name="image_preview">Image preview</string>
+    <string name="email_not_valid">"Email not valid!"</string>
+</resources>

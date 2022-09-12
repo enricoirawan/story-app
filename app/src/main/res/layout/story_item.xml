@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginVertical="10dp"
+    android:layout_marginHorizontal="10dp"
+    app:cardElevation="3dp"
+    android:elevation="3dp"
+    app:cardCornerRadius="6dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="15dp">
+
+        <ImageView
+            android:id="@+id/avatar_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_account_circle"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:paddingHorizontal="10dp"
+            android:gravity="center"
+            android:tooltipText="Nama"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/avatar_iv"
+            app:layout_constraintStart_toEndOf="@+id/avatar_iv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/story_iv"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="12dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toBottomOf="@+id/name_tv" />
+
+        <TextView
+            android:id="@+id/description_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:paddingHorizontal="10dp"
+            android:tooltipText="Description"
+            android:maxLines="2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/story_iv" />
+
+        <TextView
+            android:id="@+id/date_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:textSize="11sp"
+            android:tooltipText="Date"
+            android:paddingHorizontal="10dp"
+            android:maxLines="2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description_tv" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

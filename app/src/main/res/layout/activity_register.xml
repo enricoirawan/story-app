@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.register.RegisterActivity">
+
+    <TextView
+        android:id="@+id/app_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:letterSpacing="0.2"
+        android:text="@string/app_name"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ed_register_name"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:drawablePadding="12dp"
+        android:layout_marginTop="15dp"
+        android:textSize="14sp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/custom_person_icon"
+        android:hint="@string/full_name"
+        android:paddingHorizontal="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_logo"
+        />
+
+    <com.enrico.story_app.presentation.component.EmailEditText
+        android:id="@+id/ed_register_email"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:inputType="textEmailAddress"
+        android:drawableStart="@drawable/custom_email_icon"
+        android:drawablePadding="12dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="20dp"
+        android:paddingHorizontal="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_register_name" />
+
+    <com.enrico.story_app.presentation.component.PasswordEditText
+        android:id="@+id/ed_register_password"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:inputType="textPassword"
+        android:drawableStart="@drawable/custom_lock_icon"
+        android:drawablePadding="12dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="20dp"
+        android:paddingHorizontal="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_register_email" />
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/register"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_register_password"/>
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/login"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_button"/>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_button" />
+</androidx.constraintlayout.widget.ConstraintLayout>

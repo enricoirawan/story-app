@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Story App</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Masuk</string>
+    <string name="register">Daftar</string>
+    <string name="full_name">Nama Lengkap</string>
+    <string name="email_empty">Le-mail non può essere vuota</string>
+    <string name="name_empty">Il nome non può essere vuoto</string>
+    <string name="password_empty">La password non può essere vuota</string>
+    <string name="logout">Keluar</string>
+    <string name="fab_add">Tombol untuk menambahkan cerita</string>
+    <string name="setting">Pengaturan</string>
+    <string name="retry">Coba lagi</string>
+    <string name="dateFormat">Diunggah pada %1$s</string>
+    <string name="take_photo">Ambil gambar</string>
+    <string name="open_gallery">Buka Galeri</string>
+    <string name="describe_this_photo">Deskripsi gambar</string>
+    <string name="upload">Unggah</string>
+    <string name="add">Tambah Story</string>
+    <string name="file_not_ready">Silahkan masukan berkas gambar terlebih dahulu</string>
+    <string name="success_upload">Upload berhasil</string>
+    <string name="description_required">Deskripsi harus di isi</string>
+    <string name="image_preview">Preview gambar</string>
+    <string name="email_not_valid">"Email yang dimasukan tidak valid!"</string>
+</resources>
