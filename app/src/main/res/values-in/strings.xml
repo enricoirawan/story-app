@@ -23,5 +23,6 @@
     <string name="success_upload">Upload berhasil</string>
     <string name="description_required">Deskripsi harus di isi</string>
     <string name="image_preview">Preview gambar</string>
-    <string name="email_not_valid">"Email yang dimasukan tidak valid!"</string>
+    <string name="email_not_valid">Email yang dimasukan tidak valid!</string>
+    <string name="loading">Loading…</string>
 </resources>

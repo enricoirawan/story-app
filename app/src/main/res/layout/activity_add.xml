@@ -23,7 +23,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/preview_iv"
@@ -41,37 +41,12 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/preview_iv" />
 
-        <Button
-            android:id="@+id/take_photo_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="20dp"
-            android:layout_marginEnd="10dp"
-            android:text="@string/take_photo"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toStartOf="@+id/open_gallery_btn"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/preview_iv" />
-
-        <Button
-            android:id="@+id/open_gallery_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="20dp"
-            android:layout_marginStart="10dp"
-            android:text="@string/open_gallery"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/take_photo_btn"
-            app:layout_constraintTop_toBottomOf="@+id/preview_iv" />
-
         <EditText
             android:id="@+id/description_ed"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:layout_marginTop="50dp"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="20dp"
             android:background="@drawable/custom_input"
             android:fontFamily="@font/poppins_light"
             android:hint="@string/describe_this_photo"
@@ -79,29 +54,42 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/open_gallery_btn"
             app:layout_constraintStart_toStartOf="@+id/open_gallery_btn"
-            app:layout_constraintTop_toBottomOf="@+id/take_photo_btn" />
+            app:layout_constraintTop_toBottomOf="@+id/preview_iv" />
 
-        <Button
-            android:id="@+id/upload_btn"
-            android:layout_width="0dp"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/take_photo_btn"
+            android:layout_width="55dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:text="@string/upload"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginVertical="20dp"
+            android:layout_marginStart="20dp"
+            app:icon="@drawable/ic_camera"
+            app:iconTint="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/description_ed" />
 
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            android:layout_width="wrap_content"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/open_gallery_btn"
+            android:layout_width="55dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/description_ed"
+            android:layout_marginVertical="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            app:icon="@drawable/ic_photo_library"
+            app:iconTint="@color/white"
+            app:layout_constraintStart_toEndOf="@id/take_photo_btn"
+            app:layout_constraintTop_toBottomOf="@+id/description_ed" />
+
+        <Button
+            android:id="@+id/upload_btn"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/upload"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/upload_btn" />
+            app:layout_constraintStart_toEndOf="@id/open_gallery_btn"
+            app:layout_constraintTop_toBottomOf="@+id/description_ed" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

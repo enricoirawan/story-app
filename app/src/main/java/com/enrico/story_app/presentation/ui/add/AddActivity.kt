@@ -176,8 +176,10 @@ class AddActivity : AppCompatActivity() {
                 if (result != null) {
                     when(result){
                         is ResultState.Loading -> {
-                            binding.uploadBtn.visibility = View.GONE
-                            binding.progressBar.visibility = View.VISIBLE
+                            binding.uploadBtn.isEnabled = false
+                            binding.openGalleryBtn.isEnabled = false
+                            binding.takePhotoBtn.isEnabled = false
+                            binding.uploadBtn.text = getString(R.string.loading)
                         }
                         is ResultState.Success -> {
                             Snackbar.make(binding.root, R.string.success_upload, Snackbar.LENGTH_LONG)
@@ -190,8 +192,10 @@ class AddActivity : AppCompatActivity() {
                             }, Constant.delay)
                         }
                         is ResultState.Error -> {
-                            binding.uploadBtn.visibility = View.VISIBLE
-                            binding.progressBar.visibility = View.GONE
+                            binding.uploadBtn.isEnabled = true
+                            binding.openGalleryBtn.isEnabled = true
+                            binding.takePhotoBtn.isEnabled = true
+                            binding.uploadBtn.text = getString(R.string.upload)
                             Snackbar.make(binding.root, result.error, Snackbar.LENGTH_LONG)
                                 .setBackgroundTint(ResourcesCompat.getColor(resources, R.color.colorError, theme))
                                 .show()
