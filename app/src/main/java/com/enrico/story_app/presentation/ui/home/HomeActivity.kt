@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -37,7 +38,7 @@ class HomeActivity : AppCompatActivity() {
         registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()) { result ->
             if(result.resultCode == Activity.RESULT_OK){
-                token?.let { it -> homeViewModel.getStories(it) }
+                token?.let { it -> getStories(it) }
             }
         }
 
@@ -74,32 +75,36 @@ class HomeActivity : AppCompatActivity() {
         token = sharedPreferences.getString(Constant.preferencesToken, "")
 
         token?.let {
-            homeViewModel.getStories(it).observe(this) { result ->
-                if (result != null) {
-                    when(result){
-                        is ResultState.Loading -> {
-                            binding.shimmerLayout.visibility = View.VISIBLE
-                        }
-                        is ResultState.Success -> {
-                            binding.shimmerLayout.visibility = View.GONE
-                            showStories(result.data)
-                        }
-                        is ResultState.Error -> {
-                            binding.shimmerLayout.visibility = View.GONE
-                            Snackbar.make(binding.root, result.error, Snackbar.LENGTH_LONG)
-                                .setBackgroundTint(ResourcesCompat.getColor(resources, R.color.colorError, theme))
-                                .setAction(R.string.retry) {
-                                    homeViewModel.getStories(token!!)
-                                }
-                                .show()
-                        }
+            getStories(it)
+        }
+    }
+
+    private fun getStories(token: String) {
+        homeViewModel.getStories(token).observe(this) { result ->
+            if (result != null) {
+                when(result){
+                    is ResultState.Loading -> {
+                        binding.shimmerLayout.visibility = View.VISIBLE
+                    }
+                    is ResultState.Success -> {
+                        binding.shimmerLayout.visibility = View.GONE
+                        setUpStoryRecycler(result.data)
+                    }
+                    is ResultState.Error -> {
+                        binding.shimmerLayout.visibility = View.GONE
+                        Snackbar.make(binding.root, result.error, Snackbar.LENGTH_LONG)
+                            .setBackgroundTint(ResourcesCompat.getColor(resources, R.color.colorError, theme))
+                            .setAction(R.string.retry) {
+                                homeViewModel.getStories(token!!)
+                            }
+                            .show()
                     }
                 }
             }
         }
     }
 
-    private fun showStories(stories: List<Story>){
+    private fun setUpStoryRecycler(stories: List<Story>){
         binding.storyRv.setHasFixedSize(true)
         binding.storyRv.layoutManager = LinearLayoutManager(this)
         val storyAdapter = StoryAdapter(stories, this)

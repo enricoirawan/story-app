@@ -2,6 +2,7 @@ package com.enrico.story_app.data.remote.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.liveData
 import com.enrico.story_app.data.ResultState
 import com.enrico.story_app.data.remote.response.ErrorResponse
 import com.enrico.story_app.data.remote.response.StoriesResponse
@@ -12,62 +13,71 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
+import retrofit2.HttpException
 import retrofit2.Response
+import java.net.SocketTimeoutException
 
 class StoryRepository private constructor(
     private val apiService: ApiService,
 ) {
-    private val storyResults = MediatorLiveData<ResultState<List<Story>>>()
-    private val uploadStoryResults = MediatorLiveData<ResultState<ErrorResponse>>()
-
-    fun getStories(token: String): LiveData<ResultState<List<Story>>> {
-        storyResults.value = ResultState.Loading
-        val client = apiService.getStories("Bearer $token")
-
-        client.enqueue(object : Callback<StoriesResponse> {
-            override fun onResponse(
-                call: Call<StoriesResponse>,
-                response: Response<StoriesResponse>
-            ) {
-                if(response.isSuccessful){
-                    val listStory = response.body()!!.listStory
-                    storyResults.value = ResultState.Success(listStory)
-                }else {
-                    val errorResponse = Gson().fromJson(response.errorBody()?.charStream(), ErrorResponse::class.java)
-                    storyResults.value = ResultState.Error(errorResponse.message)
+    fun getStories(token: String): LiveData<ResultState<List<Story>>> = liveData {
+        emit(ResultState.Loading)
+        try {
+            val response = apiService.getStories("Bearer $token")
+            val stories = response.listStory
+            emit(ResultState.Success(stories))
+        } catch (throwable: Throwable) {
+            when (throwable) {
+                is HttpException -> {
+                    // handle different HTTP error codes here (4xx)
+                    val exception = throwable as HttpException
+                    val statusCode = exception.code()
+                    val errorResponse = Gson().fromJson(exception.response()?.errorBody()?.charStream(), ErrorResponse::class.java)
+                    val errorMessage = "Error : " + errorResponse.message + ", " + "Status code " + statusCode
+                    emit(ResultState.Error(errorMessage))
+                }
+                is SocketTimeoutException -> {
+                    // handle timeout from Retrofit
+                    val exception = throwable as SocketTimeoutException
+                    val errorMessage = "Error : " + exception.message
+                    emit(ResultState.Error(errorMessage))
+                }
+                else -> {
+                    // generic error handling
+                    emit(ResultState.Error("Terjadi kesalahan, silahkan coba ulang kembali"))
                 }
             }
-
-            override fun onFailure(call: Call<StoriesResponse>, t: Throwable) {
-                storyResults.value = ResultState.Error(t.message.toString())
-            }
-
-        })
-
-        return storyResults
+        }
     }
 
-    fun uploadStory(token: String, file: MultipartBody.Part, description: RequestBody): LiveData<ResultState<ErrorResponse>> {
-        uploadStoryResults.value = ResultState.Loading
-
-        val client = apiService.uploadImage("Bearer $token", file, description)
-        client.enqueue(object : Callback<ErrorResponse>{
-            override fun onResponse(call: Call<ErrorResponse>, response: Response<ErrorResponse>) {
-                if(response.isSuccessful){
-                    val response = response.body()!!
-                    uploadStoryResults.value = ResultState.Success(response)
-                }else {
-                    val errorResponse = Gson().fromJson(response.errorBody()?.charStream(), ErrorResponse::class.java)
-                    uploadStoryResults.value = ResultState.Error(errorResponse.message)
+    fun uploadStory(token: String, file: MultipartBody.Part, description: RequestBody):
+            LiveData<ResultState<ErrorResponse>> = liveData {
+        emit(ResultState.Loading)
+        try {
+            val response = apiService.uploadImage("Bearer $token", file, description)
+            emit(ResultState.Success(response))
+        } catch (throwable: Throwable) {
+            when (throwable) {
+                is HttpException -> {
+                    // handle different HTTP error codes here (4xx)
+                    val exception = throwable as HttpException
+                    val statusCode = exception.code()
+                    val errorResponse = Gson().fromJson(exception.response()?.errorBody()?.charStream(), ErrorResponse::class.java)
+                    val errorMessage = "Error : " + errorResponse.message + ", " + "Status code " + statusCode
+                    emit(ResultState.Error(errorMessage))
+                }
+                is SocketTimeoutException -> {
+                    // handle timeout from Retrofit
+                    val exception = throwable as SocketTimeoutException
+                    val errorMessage = "Error : " + exception.message
+                    emit(ResultState.Error(errorMessage))
+                }
+                else -> {
+                    // generic error handling
+                    emit(ResultState.Error("Terjadi kesalahan, silahkan coba ulang kembali"))
                 }
             }
-
-            override fun onFailure(call: Call<ErrorResponse>, t: Throwable) {
-                uploadStoryResults.value = ResultState.Error(t.message.toString())
-            }
-
-        })
-        return uploadStoryResults
+        }
     }
 
     companion object {
