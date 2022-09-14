@@ -6,7 +6,6 @@ import com.enrico.story_app.data.ResultState
 import com.enrico.story_app.data.remote.request.LoginRequest
 import com.enrico.story_app.data.remote.request.RegisterRequest
 import com.enrico.story_app.data.remote.response.ErrorResponse
-import com.enrico.story_app.data.remote.response.LoginResponse
 import com.enrico.story_app.data.remote.response.LoginResult
 import com.enrico.story_app.data.remote.retrofit.ApiService
 import com.google.gson.Gson

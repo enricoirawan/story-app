@@ -1,20 +1,15 @@
 package com.enrico.story_app.data.remote.repository
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.liveData
 import com.enrico.story_app.data.ResultState
 import com.enrico.story_app.data.remote.response.ErrorResponse
-import com.enrico.story_app.data.remote.response.StoriesResponse
 import com.enrico.story_app.data.remote.response.Story
 import com.enrico.story_app.data.remote.retrofit.ApiService
 import com.google.gson.Gson
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.HttpException
-import retrofit2.Response
 import java.net.SocketTimeoutException
 
 class StoryRepository private constructor(
