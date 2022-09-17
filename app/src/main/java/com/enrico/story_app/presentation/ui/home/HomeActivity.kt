@@ -6,11 +6,15 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.isVisible
+import androidx.paging.CombinedLoadStates
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.enrico.story_app.R
 import com.enrico.story_app.data.ResultState
@@ -94,6 +98,28 @@ class HomeActivity : AppCompatActivity() {
                     adapter.retry()
                 }
             )
+            adapter.addLoadStateListener { loadState ->
+                when (val currentState = loadState.refresh) {
+                    is LoadState.Loading -> {
+                        binding.storyRv.visibility = View.GONE
+                        binding.shimmerLayout.visibility = View.VISIBLE
+                    }
+                    is LoadState.NotLoading  -> {
+                        binding.storyRv.visibility = View.VISIBLE
+                        binding.shimmerLayout.visibility = View.GONE
+                    }
+                    is LoadState.Error -> {
+                        val extractedException = currentState.error // SomeCatchableException
+                        binding.storyRv.visibility = View.GONE
+                        binding.shimmerLayout.visibility = View.GONE
+                        extractedException.message?.let { message ->
+                            Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG)
+                                .setBackgroundTint(ResourcesCompat.getColor(resources, R.color.colorError, theme))
+                                .show()
+                        }
+                    }
+                }
+            }
             homeViewModel.getStories(token).observe(this) {
                 adapter.submitData(lifecycle, it)
             }
