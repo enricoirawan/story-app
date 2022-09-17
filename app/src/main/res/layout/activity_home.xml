@@ -16,7 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:title="@string/app_name"
-            app:titleCentered="true"
             app:menu="@menu/app_bar_menu"
             app:titleTextColor="@color/white"/>
     </com.google.android.material.appbar.AppBarLayout>
@@ -25,31 +24,7 @@
         android:id="@+id/story_rv"
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone" />
-
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmer_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:animateLayoutChanges="true"
-        android:animationCache="true"
-        app:shimmer_repeat_mode="restart"
-        app:shimmer_shape="radial">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="?attr/actionBarSize"
-            android:orientation="vertical"
-            >
-
-            <include layout="@layout/story_loading_shimmer" />
-            <include layout="@layout/story_loading_shimmer" />
-            <include layout="@layout/story_loading_shimmer" />
-            <include layout="@layout/story_loading_shimmer" />
-        </LinearLayout>
-    </com.facebook.shimmer.ShimmerFrameLayout>
+        android:layout_height="match_parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_fab"

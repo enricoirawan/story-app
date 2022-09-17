@@ -1,8 +1,12 @@
 package com.enrico.story_app.data.remote.response
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "story")
 data class Story (
+    @PrimaryKey
     @field:SerializedName("id")
     val userId: String,
 

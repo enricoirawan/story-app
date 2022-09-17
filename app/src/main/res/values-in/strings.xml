@@ -25,4 +25,10 @@
     <string name="image_preview">Preview gambar</string>
     <string name="email_not_valid">Email yang dimasukan tidak valid!</string>
     <string name="loading">Loading…</string>
+    <string name="map">Peta</string>
+    <string name="resource_not_found">Sumber tidak ditemukan</string>
+    <string name="styling_parsing_failed">Gagal menerapkan tampilan baru pada peta</string>
+    <string name="title_activity_maps">Peta</string>
+    <string name="location_not_found">Lokasi tidak ditemukan</string>
+    <string name="location">Lokasi : %1$s, %2$s</string>
 </resources>

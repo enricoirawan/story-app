@@ -6,5 +6,10 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
 class AddViewModel (private val storyRepository: StoryRepository): ViewModel() {
-    fun uploadStory(token: String, file: MultipartBody.Part, description: RequestBody)  = storyRepository.uploadStory(token, file, description)
+    fun uploadStory(token: String, file: MultipartBody.Part,
+                    description: RequestBody) = storyRepository.uploadStory(token, file, description)
+
+    fun uploadStoryWithLocation(token: String, file: MultipartBody.Part,
+                                description: RequestBody, lat: RequestBody, lon: RequestBody)
+    = storyRepository.uploadStoryWithLocation(token, file, description, lat, lon)
 }

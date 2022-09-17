@@ -8,6 +8,7 @@ import com.enrico.story_app.di.Injection
 import com.enrico.story_app.presentation.ui.add.AddViewModel
 import com.enrico.story_app.presentation.ui.home.HomeViewModel
 import com.enrico.story_app.presentation.ui.login.LoginViewModel
+import com.enrico.story_app.presentation.ui.maps.MapsViewModel
 import com.enrico.story_app.presentation.ui.register.RegisterViewModel
 
 class ViewModelFactory private constructor(private val authRepository: AuthRepository, private val storyRepository: StoryRepository) :
@@ -22,6 +23,8 @@ class ViewModelFactory private constructor(private val authRepository: AuthRepos
             return HomeViewModel(storyRepository) as T
         } else if (modelClass.isAssignableFrom(AddViewModel::class.java)) {
             return AddViewModel(storyRepository) as T
+        } else if (modelClass.isAssignableFrom(MapsViewModel::class.java)) {
+            return MapsViewModel(storyRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }

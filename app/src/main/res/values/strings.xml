@@ -24,4 +24,10 @@
     <string name="image_preview">Image preview</string>
     <string name="email_not_valid">"Email not valid!"</string>
     <string name="loading">Loading…</string>
+    <string name="map">Map</string>
+    <string name="resource_not_found">Resource not found</string>
+    <string name="styling_parsing_failed">Style parsing failed</string>
+    <string name="title_activity_maps">Maps</string>
+    <string name="location_not_found">Location not found</string>
+    <string name="location">Location : %1$s, %2$s</string>
 </resources>
