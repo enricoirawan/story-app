@@ -7,7 +7,10 @@ VIEW MODEL
     - when Network Error Should Return Error
 3. HomeViewModelTest
     - when Get Stories Should Not Null and Return Success
-4. AddViewModelTest
+4. MapsViewModelTest
+    - when Get Stories For Maps Should Return Success
+    - when Network Error Should Return Error
+5. AddViewModelTest
     - when Upload Story Should Return Success
     - when Upload Story With Location Should Return Success
     - when Upload Story Network Error Should Return Error
