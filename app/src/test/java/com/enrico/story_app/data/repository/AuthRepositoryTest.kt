@@ -7,7 +7,8 @@ import com.enrico.story_app.data.FakeApiService
 import com.enrico.story_app.data.remote.retrofit.ApiService
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

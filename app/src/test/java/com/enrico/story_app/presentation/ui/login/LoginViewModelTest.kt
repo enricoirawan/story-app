@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import com.enrico.DataDummy
 import com.enrico.getOrAwaitValue
 import com.enrico.story_app.data.ResultState
-import com.enrico.story_app.data.repository.AuthRepository
 import com.enrico.story_app.data.remote.response.LoginResult
+import com.enrico.story_app.data.repository.AuthRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.*

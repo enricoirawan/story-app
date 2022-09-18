@@ -13,20 +13,18 @@ import com.enrico.story_app.data.database.AppDatabase
 import com.enrico.story_app.data.database.StoryEntity
 import com.enrico.story_app.data.remote.retrofit.ApiService
 import com.enrico.story_app.presentation.adapter.StoryAdapter
-import com.enrico.story_app.presentation.ui.home.HomeViewModel
 import com.enrico.story_app.presentation.ui.home.StoryPagingSource
 import com.enrico.story_app.presentation.ui.home.noopListUpdateCallback
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.Mockito.`when`
 import org.mockito.junit.MockitoJUnitRunner
 
