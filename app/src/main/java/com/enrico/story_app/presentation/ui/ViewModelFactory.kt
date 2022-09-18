@@ -1,5 +1,6 @@
 package com.enrico.story_app.presentation.ui
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.enrico.story_app.data.remote.repository.AuthRepository
@@ -32,9 +33,9 @@ class ViewModelFactory private constructor(private val authRepository: AuthRepos
     companion object {
         @Volatile
         private var instance: ViewModelFactory? = null
-        fun getInstance(): ViewModelFactory =
+        fun getInstance(context: Context): ViewModelFactory =
             instance ?: synchronized(this) {
-                instance ?: ViewModelFactory(Injection.provideAuthRepository(), Injection.provideStoryRepository())
+                instance ?: ViewModelFactory(Injection.provideAuthRepository(), Injection.provideStoryRepository(context))
             }.also { instance = it }
     }
 }

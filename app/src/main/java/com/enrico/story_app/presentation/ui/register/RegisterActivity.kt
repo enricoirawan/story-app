@@ -17,7 +17,7 @@ import com.google.android.material.snackbar.Snackbar
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
 
-    private val factory: ViewModelFactory = ViewModelFactory.getInstance()
+    private lateinit var factory: ViewModelFactory
     private val registerViewModel: RegisterViewModel by viewModels {
         factory
     }
@@ -29,6 +29,8 @@ class RegisterActivity : AppCompatActivity() {
 
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        factory = ViewModelFactory.getInstance(this)
 
         binding.registerButton.setOnClickListener{
             val name = binding.edRegisterName.text.toString()

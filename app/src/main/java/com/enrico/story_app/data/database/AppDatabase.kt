@@ -4,14 +4,16 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.enrico.story_app.data.remote.response.Story
 
 @Database(
-    entities = [Story::class],
-    version = 1,
+    entities = [StoryEntity::class, RemoteKeys::class],
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase: RoomDatabase() {
+    abstract fun storyDao(): StoryDao
+    abstract fun remoteKeysDao(): RemoteKeysDao
+
     companion object {
         @Volatile
         private var INSTANCE: AppDatabase? = null

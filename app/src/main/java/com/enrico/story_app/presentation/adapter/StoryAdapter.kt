@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.enrico.story_app.R
-import com.enrico.story_app.data.remote.response.Story
+import com.enrico.story_app.data.database.StoryEntity
 import com.enrico.story_app.databinding.StoryItemBinding
 import com.enrico.story_app.presentation.ui.detail.DetailActivity
 import com.enrico.story_app.utils.Constant
 import com.enrico.story_app.utils.withDateFormat
 
-class StoryAdapter(private val activity: Activity) : PagingDataAdapter<Story, StoryAdapter.ViewHolder>(
+class StoryAdapter(private val activity: Activity) : PagingDataAdapter<StoryEntity, StoryAdapter.ViewHolder>(
     DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = StoryItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -58,12 +58,12 @@ class StoryAdapter(private val activity: Activity) : PagingDataAdapter<Story, St
     class ViewHolder(var binding: StoryItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Story>() {
-            override fun areItemsTheSame(oldItem: Story, newItem: Story): Boolean {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<StoryEntity>() {
+            override fun areItemsTheSame(oldItem: StoryEntity, newItem: StoryEntity): Boolean {
                 return oldItem == newItem
             }
 
-            override fun areContentsTheSame(oldItem: Story, newItem: Story): Boolean {
+            override fun areContentsTheSame(oldItem: StoryEntity, newItem: StoryEntity): Boolean {
                 return oldItem.userId == newItem.userId
             }
         }

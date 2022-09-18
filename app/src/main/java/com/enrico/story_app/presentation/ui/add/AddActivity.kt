@@ -49,7 +49,7 @@ class AddActivity : AppCompatActivity() {
     private var locationLongitude: Double? = null
     private var locationLatitude: Double? = null
 
-    private val factory: ViewModelFactory = ViewModelFactory.getInstance()
+    private lateinit var factory: ViewModelFactory
     private val addViewModel: AddViewModel by viewModels {
         factory
     }
@@ -64,6 +64,8 @@ class AddActivity : AppCompatActivity() {
 
         binding = ActivityAddBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        factory = ViewModelFactory.getInstance(this)
 
         if (!allPermissionsGranted()) {
             ActivityCompat.requestPermissions(

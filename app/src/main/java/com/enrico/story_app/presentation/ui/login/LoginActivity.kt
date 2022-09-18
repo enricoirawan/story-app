@@ -22,7 +22,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var sharedPreferences: SharedPreferences
 
-    private val factory: ViewModelFactory = ViewModelFactory.getInstance()
+    private lateinit var factory: ViewModelFactory
     private val loginViewModel: LoginViewModel by viewModels {
         factory
     }
@@ -32,6 +32,8 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        factory = ViewModelFactory.getInstance(this)
 
         sharedPreferences = getSharedPreferences(Constant.preferencesName, Context.MODE_PRIVATE)
 

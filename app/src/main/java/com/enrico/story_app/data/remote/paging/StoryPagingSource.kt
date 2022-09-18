@@ -1,13 +1,9 @@
 package com.enrico.story_app.data.remote.paging
 
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.enrico.story_app.data.remote.response.Story
 import com.enrico.story_app.data.remote.retrofit.ApiService
-import retrofit2.HttpException
-import java.io.IOException
-import java.net.UnknownHostException
 
 class StoryPagingSource(private val apiService: ApiService, private val token: String): PagingSource<Int, Story>() {
     private companion object {

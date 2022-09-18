@@ -1,14 +1,12 @@
 package com.enrico.story_app.data.remote.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
-import androidx.paging.liveData
+import androidx.paging.*
 import com.enrico.story_app.data.ResultState
-import com.enrico.story_app.data.remote.paging.StoryPagingSource
+import com.enrico.story_app.data.database.AppDatabase
+import com.enrico.story_app.data.database.StoryEntity
+import com.enrico.story_app.data.mediator.StoryRemoteMediator
 import com.enrico.story_app.data.remote.response.ErrorResponse
 import com.enrico.story_app.data.remote.response.Story
 import com.enrico.story_app.data.remote.retrofit.ApiService
@@ -20,14 +18,17 @@ import java.net.SocketTimeoutException
 
 class StoryRepository private constructor(
     private val apiService: ApiService,
+    private val appDatabase: AppDatabase
 ) {
-    fun getStories(token: String): LiveData<PagingData<Story>> {
+    fun getStories(token: String): LiveData<PagingData<StoryEntity>> {
+        @OptIn(ExperimentalPagingApi::class)
         return Pager(
             config = PagingConfig(
-                pageSize = 5
+                pageSize = 10
             ),
+            remoteMediator = StoryRemoteMediator(appDatabase, apiService, "Bearer $token"),
             pagingSourceFactory = {
-                StoryPagingSource(apiService, "Bearer $token")
+                appDatabase.storyDao().getAllStory()
             }
         ).liveData
     }
@@ -128,9 +129,10 @@ class StoryRepository private constructor(
         private var instance: StoryRepository? = null
         fun getInstance(
             apiService: ApiService,
+            appDatabase: AppDatabase
         ): StoryRepository =
             instance ?: synchronized(this) {
-                instance ?: StoryRepository(apiService)
+                instance ?: StoryRepository(apiService, appDatabase)
             }.also { instance = it }
     }
 }

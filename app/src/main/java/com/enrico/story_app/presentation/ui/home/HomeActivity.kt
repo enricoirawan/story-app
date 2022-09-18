@@ -6,19 +6,14 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.view.isVisible
-import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.enrico.story_app.R
-import com.enrico.story_app.data.ResultState
-import com.enrico.story_app.data.remote.response.Story
 import com.enrico.story_app.databinding.ActivityHomeBinding
 import com.enrico.story_app.presentation.adapter.LoadingStateAdapter
 import com.enrico.story_app.presentation.adapter.StoryAdapter
@@ -34,7 +29,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences
     private var token: String? = null
 
-    private val factory: ViewModelFactory = ViewModelFactory.getInstance()
+    private lateinit var factory: ViewModelFactory
     private val homeViewModel: HomeViewModel by viewModels {
         factory
     }
@@ -54,6 +49,8 @@ class HomeActivity : AppCompatActivity() {
 
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        factory = ViewModelFactory.getInstance(this)
 
         binding.appBarLayout.transitionName = Constant.logoTransitionName
 
