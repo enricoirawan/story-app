@@ -1,4 +1,4 @@
-package com.enrico.story_app.data.remote.repository
+package com.enrico.story_app.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
@@ -16,7 +16,7 @@ import okhttp3.RequestBody
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
 
-class StoryRepository private constructor(
+class StoryRepository constructor(
     private val apiService: ApiService,
     private val appDatabase: AppDatabase
 ) {

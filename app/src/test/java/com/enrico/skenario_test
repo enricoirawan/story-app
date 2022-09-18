@@ -1,0 +1,24 @@
+VIEW MODEL
+1. RegisterViewModelTest
+    - when Register Should Return Success
+    - when Network Error Should Return Error
+2. LoginViewModelTest
+    - when Login Should Return Success
+    - when Network Error Should Return Error
+3. HomeViewModelTest
+    - when Get Stories Should Not Null and Return Success
+4. AddViewModelTest
+    - when Upload Story Should Return Success
+    - when Upload Story With Location Should Return Success
+    - when Upload Story Network Error Should Return Error
+    - when Upload Story With Location Network Error Should Return Error
+
+REPOSITORY
+1. AuthRepositoryTest
+    - when register Successfully
+    - when Login Successfully
+2. StoryRepositoryTest
+    - when getStories paging Successfully
+    - when getStoriesForMaps Successfully
+    - when uploadStory Successfully
+    - when uploadStoryWithLocation Successfully

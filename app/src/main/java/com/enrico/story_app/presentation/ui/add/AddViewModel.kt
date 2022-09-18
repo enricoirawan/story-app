@@ -1,7 +1,7 @@
 package com.enrico.story_app.presentation.ui.add
 
 import androidx.lifecycle.ViewModel
-import com.enrico.story_app.data.remote.repository.StoryRepository
+import com.enrico.story_app.data.repository.StoryRepository
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 

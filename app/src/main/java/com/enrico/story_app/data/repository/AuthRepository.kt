@@ -1,4 +1,4 @@
-package com.enrico.story_app.data.remote.repository
+package com.enrico.story_app.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
@@ -12,7 +12,7 @@ import com.google.gson.Gson
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
 
-class AuthRepository private constructor(
+class AuthRepository constructor(
     private val apiService: ApiService,
 ){
     fun register(registerRequest: RegisterRequest): LiveData<ResultState<ErrorResponse>> = liveData {

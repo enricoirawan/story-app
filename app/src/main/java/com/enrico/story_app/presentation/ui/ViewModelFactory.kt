@@ -3,8 +3,8 @@ package com.enrico.story_app.presentation.ui
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.enrico.story_app.data.remote.repository.AuthRepository
-import com.enrico.story_app.data.remote.repository.StoryRepository
+import com.enrico.story_app.data.repository.AuthRepository
+import com.enrico.story_app.data.repository.StoryRepository
 import com.enrico.story_app.di.Injection
 import com.enrico.story_app.presentation.ui.add.AddViewModel
 import com.enrico.story_app.presentation.ui.home.HomeViewModel
